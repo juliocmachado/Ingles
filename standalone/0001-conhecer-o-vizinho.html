@@ -214,7 +214,12 @@ const Recall = (() => {
     const n = normalize(answer);
     return accept.some(re => new RegExp("^(?:" + re + ")$").test(n));
   }
-  const learnerName = () => localStorage.getItem("ingles.name") || "Ana";
+  // Storage can be missing or throw (private mode, sandboxed viewers): never let it break a lesson.
+  const store = {
+    get: k => { try { return localStorage.getItem(k); } catch { return null; } },
+    set: (k, v) => { try { localStorage.setItem(k, v); } catch {} },
+  };
+  const learnerName = () => store.get("ingles.name") || "Ana";
   const fill = s => (s || "").replace(/\{name\}/g, learnerName());
 
   // One answer row: text input + check + speak + reveal. Calls onDone(correctFirstTry).
@@ -255,8 +260,8 @@ const Recall = (() => {
       } catch (err) {
         fb.className = "feedback no";
         fb.textContent = err.message === "unsupported"
-          ? "Seu navegador não reconhece fala (use Chrome ou Edge). Fale em voz alta e depois digite."
-          : "Não ouvi nada. Permita o microfone e tente de novo.";
+          ? "O microfone não está disponível aqui. Sem problema: fale em voz alta e depois digite."
+          : "Não consegui usar o microfone. Fale em voz alta e depois digite.";
       }
       mic.textContent = "🎤 Falar / Speak";
     };
@@ -333,8 +338,8 @@ const Recall = (() => {
     document.querySelectorAll(".recall[data-items]").forEach(mountRecall);
     document.querySelectorAll(".dialogue-sim[data-turns]").forEach(mountDialogue);
     document.querySelectorAll("input.learner-name").forEach(inp => {
-      inp.value = localStorage.getItem("ingles.name") || "";
-      inp.oninput = () => localStorage.setItem("ingles.name", inp.value.trim());
+      inp.value = store.get("ingles.name") || "";
+      inp.oninput = () => store.set("ingles.name", inp.value.trim());
     });
   });
   return { normalize, matches };
