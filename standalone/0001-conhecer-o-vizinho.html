@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lição 1 · Conhecer o vizinho</title>
+<style>
+/* Shared stylesheet for every lesson and reference doc. */
+:root {
+  --bg: #fffff8;
+  --ink: #111;
+  --muted: #5f5f5f;
+  --rule: #ddd8c8;
+  --accent: #a3201d;      /* red ink, used sparingly */
+  --en: #1d4e89;          /* English phrases */
+  --good: #2e7d32;
+  --bad: #b3261e;
+  --card: #f8f6ec;
+  --serif: "ET Book", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: "Gill Sans", "Gill Sans MT", "Seravek", "Trebuchet MS", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { font-size: 18px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--serif); line-height: 1.55;
+}
+main { max-width: 42rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+header.lesson { margin-bottom: 2.5rem; }
+.kicker { font-family: var(--sans); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { font-weight: 400; font-size: 2.2rem; line-height: 1.15; margin: .3rem 0 .6rem; }
+h2 { font-weight: 400; font-style: italic; font-size: 1.45rem; margin: 2.8rem 0 .6rem; border-top: 1px solid var(--rule); padding-top: 1.4rem; }
+h3 { font-weight: 400; font-size: 1.1rem; margin: 1.6rem 0 .4rem; }
+.subtitle { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0; }
+p, li { hyphens: auto; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 2px; }
+.en { color: var(--en); font-style: italic; }
+.pt { color: var(--muted); }
+small, .note { font-size: .85rem; color: var(--muted); }
+sup.cite a { text-decoration: none; color: var(--accent); font-size: .75em; }
+.win { border-left: 3px solid var(--accent); padding: .3rem 0 .3rem 1rem; margin: 1.5rem 0; }
+.tip { background: var(--card); padding: .8rem 1rem; border-radius: 4px; margin: 1.2rem 0; font-size: .95rem; }
+.tip strong:first-child { font-family: var(--sans); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; }
+
+/* Phrase table */
+table.phrases { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+table.phrases th { font-family: var(--sans); font-weight: 400; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: left; border-bottom: 1px solid var(--ink); padding: .3rem .4rem; }
+table.phrases td { border-bottom: 1px solid var(--rule); padding: .55rem .4rem; vertical-align: top; }
+table.phrases td:first-child { color: var(--en); font-style: italic; }
+table.phrases td.say { white-space: nowrap; width: 1%; }
+
+/* Buttons */
+button, .btn {
+  font-family: var(--sans); font-size: .8rem; letter-spacing: .03em;
+  background: transparent; color: var(--ink); border: 1px solid var(--ink);
+  border-radius: 999px; padding: .3rem .8rem; cursor: pointer; margin: .15rem .15rem .15rem 0;
+}
+button:hover { background: var(--ink); color: var(--bg); }
+button.icon { padding: .15rem .5rem; border-color: var(--rule); }
+button:disabled { opacity: .4; cursor: default; background: transparent; color: var(--ink); }
+
+/* Practice widgets */
+.exercise { background: var(--card); border-radius: 6px; padding: 1rem 1.1rem; margin: 1rem 0; }
+.exercise .prompt { margin: 0 0 .6rem; }
+.choices { display: grid; gap: .4rem; }
+.choices button { text-align: left; border-radius: 4px; border-color: var(--rule); font-family: var(--serif); font-size: 1rem; padding: .45rem .7rem; }
+.choices button.right { border-color: var(--good); background: #e8f3e8; color: var(--ink); }
+.choices button.wrong { border-color: var(--bad); background: #fbeaea; color: var(--ink); }
+.feedback { margin: .5rem 0 0; font-size: .92rem; min-height: 1.2em; }
+.feedback.ok { color: var(--good); }
+.feedback.no { color: var(--bad); }
+input.answer {
+  width: 100%; font-family: var(--serif); font-size: 1.05rem; padding: .45rem .6rem;
+  border: 1px solid var(--rule); border-radius: 4px; background: #fff; margin: .2rem 0 .3rem;
+}
+.score { font-family: var(--sans); font-size: .85rem; color: var(--muted); margin-top: .8rem; }
+
+/* Dialogue */
+.dialogue .line { margin: .45rem 0; }
+.dialogue .who { font-family: var(--sans); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: .4rem; }
+.dialogue .them { color: var(--en); font-style: italic; }
+.dialogue .you { color: var(--ink); }
+
+nav.lesson-nav { margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 1rem; font-family: var(--sans); font-size: .85rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+@media print {
+  html { font-size: 11pt; }
+  body { background: #fff; }
+  main { max-width: none; padding: 0; }
+  button, .exercise, nav.lesson-nav, .no-print { display: none !important; }
+  h2 { break-after: avoid; }
+  table.phrases tr { break-inside: avoid; }
+  a { text-decoration: none; }
+}
+</style>
+<script>
+// Speech helpers shared by all lessons: listen (text-to-speech) and speak (speech recognition).
+// Change LANG to match the destination country's accent: en-US, en-GB, en-CA, en-AU, en-IE.
+const Speech = (() => {
+  const LANG = "en-US";
+  const synth = window.speechSynthesis;
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  function pickVoice() {
+    const voices = synth ? synth.getVoices() : [];
+    return voices.find(v => v.lang === LANG && /natural|google|samantha/i.test(v.name))
+        || voices.find(v => v.lang === LANG)
+        || voices.find(v => v.lang && v.lang.startsWith("en"));
+  }
+
+  function say(text, rate = 0.9) {
+    if (!synth) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = LANG; u.rate = rate;
+    const v = pickVoice(); if (v) u.voice = v;
+    synth.speak(u);
+  }
+
+  // Resolves with the best transcript, or rejects if recognition is unavailable/fails.
+  function listen() {
+    return new Promise((resolve, reject) => {
+      if (!Recognition) return reject(new Error("unsupported"));
+      const r = new Recognition();
+      r.lang = LANG; r.interimResults = false; r.maxAlternatives = 3;
+      r.onresult = e => resolve(Array.from(e.results[0]).map(a => a.transcript));
+      r.onerror = e => reject(e.error || e);
+      r.start();
+    });
+  }
+
+  // Turn every [data-say] element into a pair of listen buttons (normal + slow).
+  function wire(root = document) {
+    root.querySelectorAll("[data-say]").forEach(el => {
+      if (el.dataset.wired) return;
+      el.dataset.wired = "1";
+      const text = el.dataset.say;
+      const normal = Object.assign(document.createElement("button"), { className: "icon", textContent: "▶", title: "Ouvir / Listen" });
+      const slow = Object.assign(document.createElement("button"), { className: "icon", textContent: "🐢", title: "Devagar / Slowly" });
+      normal.onclick = () => say(text);
+      slow.onclick = () => say(text, 0.55);
+      el.append(normal, slow);
+    });
+  }
+
+  if (synth) synth.onvoiceschanged = () => {};
+  document.addEventListener("DOMContentLoaded", () => wire());
+  return { say, listen, wire, canListen: !!Recognition, LANG };
+})();
+</script>
+<script>
+// Multiple-choice quiz. Usage:
+// <div class="quiz" data-quiz='[{"q":"...","options":["a","b"],"answer":0,"why":"..."}]'></div>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".quiz[data-quiz]").forEach(root => {
+    const items = JSON.parse(root.dataset.quiz);
+    let correct = 0, answered = 0;
+    const score = Object.assign(document.createElement("p"), { className: "score" });
+    const update = () => score.textContent = `${correct} / ${items.length} certas na primeira tentativa`;
+
+    items.forEach((item, i) => {
+      const box = Object.assign(document.createElement("div"), { className: "exercise" });
+      box.innerHTML = `<p class="prompt"><strong>${i + 1}.</strong> ${item.q}</p>`;
+      const choices = Object.assign(document.createElement("div"), { className: "choices" });
+      const fb = Object.assign(document.createElement("p"), { className: "feedback" });
+      let first = true;
+      item.options.forEach((opt, j) => {
+        const b = Object.assign(document.createElement("button"), { textContent: opt });
+        b.onclick = () => {
+          if (j === item.answer) {
+            b.classList.add("right");
+            fb.className = "feedback ok";
+            fb.innerHTML = "✓ " + (item.why || "Isso!");
+            if (first) correct++;
+            answered++;
+            choices.querySelectorAll("button").forEach(x => x.disabled = x !== b);
+            update();
+          } else {
+            b.classList.add("wrong"); b.disabled = true;
+            fb.className = "feedback no";
+            fb.textContent = "✗ Tente de novo / Try again.";
+            first = false;
+          }
+        };
+        choices.append(b);
+      });
+      box.append(choices, fb);
+      root.append(box);
+    });
+    update();
+    root.append(score);
+  });
+});
+</script>
+<script>
+// Active recall: the learner produces English from memory, by typing or speaking.
+// Two widgets share one answer checker:
+//   <div class="recall" data-items='[{"prompt":"...","accept":["regex"],"model":"..."}]'></div>
+//   <div class="dialogue-sim" data-partner="Emma" data-turns='[{"them":"Hi!","hint":"...","accept":["regex"],"model":"..."}]'></div>
+// "accept" entries are regexes tested against the normalized answer (lowercase, no punctuation,
+// contractions expanded). "{name}" in model/them text is replaced by the learner's name.
+const Recall = (() => {
+  const CONTRACTIONS = [
+    [/\bi'?m\b/g, "i am"], [/\byou'?re\b/g, "you are"], [/\bit'?s\b/g, "it is"],
+    [/\bname'?s\b/g, "name is"], [/\bwhat'?s\b/g, "what is"], [/\bwhere'?s\b/g, "where is"],
+    [/\bhow'?s\b/g, "how is"], [/\bthat'?s\b/g, "that is"],
+  ];
+  function normalize(s) {
+    s = s.toLowerCase().replace(/[’`]/g, "'");
+    CONTRACTIONS.forEach(([re, full]) => s = s.replace(re, full));
+    return s.replace(/[^a-zà-ú' ]/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function matches(answer, accept) {
+    const n = normalize(answer);
+    return accept.some(re => new RegExp("^(?:" + re + ")$").test(n));
+  }
+  const learnerName = () => localStorage.getItem("ingles.name") || "Ana";
+  const fill = s => (s || "").replace(/\{name\}/g, learnerName());
+
+  // One answer row: text input + check + speak + reveal. Calls onDone(correctFirstTry).
+  function answerRow(item, onDone) {
+    const wrap = document.createElement("div");
+    const input = Object.assign(document.createElement("input"), { className: "answer", placeholder: "Digite ou fale em inglês… / Type or say it…", autocomplete: "off", spellcheck: false });
+    const fb = Object.assign(document.createElement("p"), { className: "feedback" });
+    const check = Object.assign(document.createElement("button"), { textContent: "Conferir / Check" });
+    const mic = Object.assign(document.createElement("button"), { textContent: "🎤 Falar / Speak" });
+    const reveal = Object.assign(document.createElement("button"), { textContent: "Mostrar / Show" });
+    let tries = 0, done = false;
+
+    const finish = ok => {
+      if (done) return; done = true;
+      input.disabled = check.disabled = mic.disabled = reveal.disabled = true;
+      onDone && onDone(ok);
+    };
+    const grade = text => {
+      tries++;
+      if (matches(text, item.accept)) {
+        fb.className = "feedback ok";
+        fb.innerHTML = `✓ Boa! Modelo: <span class="en">${fill(item.model)}</span>`;
+        Speech.say(fill(item.model));
+        finish(tries === 1);
+      } else {
+        fb.className = "feedback no";
+        fb.textContent = tries < 2 ? "✗ Quase. Tente de novo (dica: frase curta e completa)." : "✗ Tente mais uma vez ou clique em Mostrar.";
+      }
+    };
+    check.onclick = () => input.value.trim() && grade(input.value);
+    input.onkeydown = e => { if (e.key === "Enter") check.onclick(); };
+    mic.onclick = async () => {
+      mic.textContent = "🎤 Ouvindo… / Listening…";
+      try {
+        const alts = await Speech.listen();
+        input.value = alts.find(a => matches(a, item.accept)) || alts[0];
+        grade(input.value);
+      } catch (err) {
+        fb.className = "feedback no";
+        fb.textContent = err.message === "unsupported"
+          ? "Seu navegador não reconhece fala (use Chrome ou Edge). Fale em voz alta e depois digite."
+          : "Não ouvi nada. Permita o microfone e tente de novo.";
+      }
+      mic.textContent = "🎤 Falar / Speak";
+    };
+    reveal.onclick = () => {
+      fb.className = "feedback";
+      fb.innerHTML = `Resposta modelo: <span class="en">${fill(item.model)}</span> — repita em voz alta 2×.`;
+      Speech.say(fill(item.model));
+      finish(false);
+    };
+    if (!Speech.canListen) mic.title = "Funciona no Chrome/Edge";
+    wrap.append(input, check, mic, reveal, fb);
+    return wrap;
+  }
+
+  function score(root, total) {
+    const p = Object.assign(document.createElement("p"), { className: "score" });
+    let ok = 0, n = 0;
+    p.textContent = `0 / ${total}`;
+    root.append(p);
+    return good => { n++; if (good) ok++; p.textContent = `${ok} / ${total} de memória na primeira tentativa` + (n === total ? " — terminado!" : ""); };
+  }
+
+  function mountRecall(root) {
+    const items = JSON.parse(root.dataset.items);
+    const boxes = items.map((item, i) => {
+      const box = Object.assign(document.createElement("div"), { className: "exercise" });
+      box.innerHTML = `<p class="prompt"><strong>${i + 1}.</strong> ${item.prompt}</p>`;
+      return box;
+    });
+    boxes.forEach(b => root.append(b));
+    const tick = score(root, items.length);
+    items.forEach((item, i) => boxes[i].append(answerRow(item, tick)));
+  }
+
+  function mountDialogue(root) {
+    const turns = JSON.parse(root.dataset.turns);
+    const partner = root.dataset.partner || "Them";
+    const box = Object.assign(document.createElement("div"), { className: "exercise dialogue" });
+    const start = Object.assign(document.createElement("button"), { textContent: "▶ Começar a conversa / Start" });
+    box.append(start);
+    root.append(box);
+    let tick;
+
+    const line = (who, text, cls) => {
+      const p = Object.assign(document.createElement("p"), { className: "line" });
+      p.innerHTML = `<span class="who">${who}</span><span class="${cls}">${text}</span>`;
+      box.append(p);
+      return p;
+    };
+    const play = i => {
+      if (i >= turns.length) {
+        line("", "🎉 Conversa completa! Faça de novo amanhã, sem olhar a tabela.", "you");
+        return;
+      }
+      const t = turns[i];
+      const them = fill(t.them);
+      const p = line(partner, them, "them");
+      const again = Object.assign(document.createElement("button"), { className: "icon", textContent: "▶" });
+      again.onclick = () => Speech.say(them);
+      p.append(" ", again);
+      Speech.say(them);
+      if (!t.accept) return play(i + 1);
+      if (t.hint) line("", `<small>${t.hint}</small>`, "pt");
+      box.append(answerRow(t, good => { tick(good); setTimeout(() => play(i + 1), 900); }));
+    };
+    start.onclick = () => {
+      start.remove();
+      tick = score(root, turns.filter(t => t.accept).length);
+      play(0);
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".recall[data-items]").forEach(mountRecall);
+    document.querySelectorAll(".dialogue-sim[data-turns]").forEach(mountDialogue);
+    document.querySelectorAll("input.learner-name").forEach(inp => {
+      inp.value = localStorage.getItem("ingles.name") || "";
+      inp.oninput = () => localStorage.setItem("ingles.name", inp.value.trim());
+    });
+  });
+  return { normalize, matches };
+})();
+</script>
+</head>
+<body>
+<main>
+<header class="lesson">
+  <div class="kicker">Lição 1 · Lesson 1 · ~15 min</div>
+  <h1>Os primeiros 30 segundos com o vizinho</h1>
+  <p class="subtitle">Meeting someone new — sem travar.</p>
+</header>
+
+<p>Primeiro dia no país novo. Você sai do apartamento e a vizinha sorri: <span class="en">“Hi! I’m Emma.”</span> É a conversa mais comum de quem acabou de se mudar — e ela quase sempre segue o mesmo roteiro de quatro passos.</p>
+
+<div class="win"><strong>Sua vitória de hoje:</strong> manter uma mini-conversa de 4 trocas (nome → origem → “como vai?” → despedida) falando em voz alta, sem olhar a cola.</div>
+
+<p class="no-print">Antes de começar, seu nome (vai aparecer nos exemplos): <input class="answer learner-name" style="width:12rem;display:inline-block" placeholder="ex.: Julio"></p>
+
+<h2>1 · As frases / The phrases</h2>
+
+<p>Não decore palavra por palavra. Aprenda cada frase como um <strong>bloco</strong> pronto — é assim que nativos falam. Clique ▶ para ouvir e 🐢 para ouvir devagar. <strong>Repita cada uma em voz alta.</strong></p>
+
+<table class="phrases">
+  <thead><tr><th>Inglês</th><th></th><th>Quando usar</th></tr></thead>
+  <tbody>
+    <tr><td>Hi, I’m Julio.</td><td class="say" data-say="Hi, I'm Julio."></td><td>Dizer seu nome. <span class="note">(<span class="en">My name is…</span> também serve, mas é mais formal.)</span></td></tr>
+    <tr><td>Nice to meet you.</td><td class="say" data-say="Nice to meet you."></td><td>“Prazer.” Só no <em>primeiro</em> encontro.<sup class="cite"><a href="https://www.oxfordlearnersdictionaries.com/definition/english/meet_1">[1]</a></sup></td></tr>
+    <tr><td>Nice to meet you, too.</td><td class="say" data-say="Nice to meet you, too."></td><td>Resposta ao “Nice to meet you” — é só repetir + <span class="en">too</span>.</td></tr>
+    <tr><td>Where are you from?</td><td class="say" data-say="Where are you from?"></td><td>“De onde você é?”</td></tr>
+    <tr><td>I’m from Brazil.</td><td class="say" data-say="I'm from Brazil."></td><td>“Sou do Brasil.”</td></tr>
+    <tr><td>How are you?</td><td class="say" data-say="How are you?"></td><td>“Como vai?” — muitas vezes é só um cumprimento.</td></tr>
+    <tr><td>I’m good, thanks. And you?</td><td class="say" data-say="I'm good, thanks. And you?"></td><td>Resposta curta e positiva + <strong>devolver a pergunta</strong>.<sup class="cite"><a href="https://www.lawlessenglish.com/learn-english/vocabulary/greetings/">[2]</a></sup></td></tr>
+    <tr><td>Nice meeting you. See you!</td><td class="say" data-say="Nice meeting you. See you!"></td><td>Despedida depois de conhecer alguém.<sup class="cite"><a href="https://www.oxfordlearnersdictionaries.com/definition/english/meet_1">[1]</a></sup></td></tr>
+  </tbody>
+</table>
+
+<div class="tip"><strong>Armadilha de brasileiro</strong>
+Em português dizemos “<em>De onde</em> você é?”, então sai “<span class="en">From where are you?</span>”. Em inglês o <span class="en">from</span> vai para o <strong>final</strong>: <span class="en">Where are you from?</span></div>
+
+<div class="tip"><strong>Ouvido</strong>
+Na fala rápida, <span class="en">meet you</span> soa quase como “<em>mee-chu</em>”, e quase ninguém diz <span class="en">I am</span> — diz <span class="en">I’m</span>. Ouça pessoas reais dizendo a frase no <a href="https://youglish.com/pronounce/nice%20to%20meet%20you/english/us">YouGlish</a>.</div>
+
+<div class="tip"><strong>Meet × See</strong>
+<span class="en">Meet</span> = conhecer pela primeira vez. Para quem você já conhece, use <span class="en">Nice to see you</span>.<sup class="cite"><a href="https://www.oxfordlearnersdictionaries.com/definition/english/meet_1">[1]</a></sup></div>
+
+<h2>2 · Escolha a resposta / Pick the reply</h2>
+<p>Aquecimento rápido. Leia, escolha, e <strong>diga a resposta certa em voz alta</strong>.</p>
+
+<div class="quiz" data-quiz='[
+ {"q":"Emma diz: <span class=\"en\">“Nice to meet you.”</span> Você responde:",
+  "options":["I am fine, thank you.","Yes, I am from Brazil.","Nice to meet you, too.","Nice to see you again."],
+  "answer":2,"why":"Repita a frase + <span class=\"en\">too</span>."},
+ {"q":"Emma pergunta: <span class=\"en\">“How are you?”</span> Você responde:",
+  "options":["Good, thanks. And you?","I’m from São Paulo.","Nice to meet you.","My name is Ana."],
+  "answer":0,"why":"Curto, positivo, e devolve a pergunta."},
+ {"q":"Emma pergunta: <span class=\"en\">“Where are you from?”</span> Você responde:",
+  "options":["I’m fine, thanks.","My name’s Ana.","Nice meeting you.","I’m from Brazil."],
+  "answer":3,"why":"<span class=\"en\">I’m from</span> + país ou cidade."},
+ {"q":"Você quer devolver a pergunta <span class=\"en\">“How are you?”</span>. O que você diz no final?",
+  "options":["You too?","And you?","For you?","With you?"],
+  "answer":1,"why":"<span class=\"en\">And you?</span> é o jeito mais simples de devolver."},
+ {"q":"Você acabou de conhecer Emma e vai embora. A despedida mais natural é:",
+  "options":["Nice to see you.","Nice to know you.","Nice meeting you. Bye!","Have a nice meet."],
+  "answer":2,"why":"<span class=\"en\">Nice meeting you</span> = despedida após conhecer. <span class=\"en\">See</span> é para quem você já conhece; <span class=\"en\">know</span> é tradução literal."}
+]'></div>
+
+<h2>3 · Lembre sem olhar / Recall</h2>
+<p><strong>Role a tabela para fora da tela.</strong> Agora produza a frase de memória — digitando ou falando (🎤 funciona no Chrome/Edge). Errar aqui é bom: o esforço de lembrar é o que fixa a frase na memória de longo prazo.<sup class="cite"><a href="https://en.wikipedia.org/wiki/Desirable_difficulty">[3]</a></sup></p>
+
+<div class="recall" data-items='[
+ {"prompt":"Você acabou de conhecer alguém. Diga “Prazer em conhecer você.”","accept":["(it is )?(nice|pleased|good|great) to meet you"],"model":"Nice to meet you."},
+ {"prompt":"Pergunte: “De onde você é?”","accept":["where are you from"],"model":"Where are you from?"},
+ {"prompt":"Diga “Oi, eu sou ___” com o seu nome.","accept":["(hi|hello|hey)? ?(there )?(i am|my name is) [a-zà-ú&#39;]+( [a-zà-ú&#39;]+)?"],"model":"Hi, I’m {name}."},
+ {"prompt":"A pessoa disse <span class=\"en\">“Nice to meet you.”</span> Responda.","accept":["(nice|pleased|good|great) to meet you too","you too","same here"],"model":"Nice to meet you, too."},
+ {"prompt":"Pergunte: “Como vai?”","accept":["how are you( doing| today)?","how is it going"],"model":"How are you?"},
+ {"prompt":"Alguém perguntou <span class=\"en\">“How are you?”</span> Responda e devolva a pergunta.","accept":["(i am )?(good|fine|ok|okay|great|well|very well|not bad|pretty good)( thanks| thank you)? ?(and you|how about you|and yourself|how are you)"],"model":"I’m good, thanks. And you?"}
+]'></div>
+
+<h2>4 · A conversa / The conversation</h2>
+<p>Agora é pra valer. A vizinha Emma fala (ouça!) e você responde — de preferência <strong>em voz alta</strong> antes de digitar. Sem olhar a tabela.</p>
+
+<div class="dialogue-sim" data-partner="Emma" data-turns='[
+ {"them":"Hi! I’m Emma. I live next door.","hint":"Cumprimente e diga seu nome.","accept":["(hi|hello|hey)? ?(there )?(emma )?(i am|my name is) [a-zà-ú&#39;]+( [a-zà-ú&#39;]+)?( (nice|pleased) to meet you)?"],"model":"Hi, I’m {name}. Nice to meet you."},
+ {"them":"Nice to meet you, too. Where are you from?","hint":"Diga de onde você é.","accept":["(i am )?from [a-zà-ú ]+","i am (brazilian|from [a-zà-ú ]+)"],"model":"I’m from Brazil."},
+ {"them":"Oh, nice! So, how are you today?","hint":"Responda e devolva a pergunta.","accept":["(i am )?(good|fine|ok|okay|great|well|very well|not bad|pretty good)( thanks| thank you)? ?(and you|how about you|and yourself|how are you)"],"model":"I’m good, thanks. And you?"},
+ {"them":"I’m great, thanks! Well, see you around!","hint":"Despeça-se de quem você acabou de conhecer.","accept":["(it was )?(nice|good|great) (meeting|to meet) you( too)?( bye| goodbye| see you( later| around)?)?","(bye|goodbye|see you)( later| around)?( nice meeting you)?"],"model":"Nice meeting you. See you!"}
+]'></div>
+
+<p class="note">Se 🎤 não estiver disponível: fale em voz alta primeiro, <em>depois</em> digite. Falar é o treino; digitar é só a conferência.</p>
+
+<h2>5 · Depois da lição / After the lesson</h2>
+<ul>
+  <li><strong>Amanhã (espaçamento):</strong> antes da lição 2, refaça só as seções 3 e 4 — sem reler a tabela. Lembrar depois de um dia de esquecimento fixa muito mais do que repetir hoje.<sup class="cite"><a href="https://bjorklab.psych.ucla.edu/wp-content/uploads/sites/13/2016/07/Finley_Benjamin_Hays_RBjork_Kornell_2011.pdf">[4]</a></sup></li>
+  <li><strong>Fonte principal:</strong> assista ao vídeo <a href="https://learnenglish.britishcouncil.org/free-resources/speaking/a1/meeting-new-people">“Meeting new people” do British Council (A1)</a>. Anote uma frase que eles usam e que não está aqui.</li>
+  <li><strong>Desafio de coragem (opcional):</strong> grave um áudio de 15 segundos se apresentando com as frases de hoje. Se quiser, mande para alguém no <a href="https://www.tandem.net/">Tandem</a> ou <a href="https://www.hellotalk.com/">HelloTalk</a>.</li>
+  <li><strong>Cola para imprimir:</strong> <a href="frases-do-dia-a-dia.html">Frases do dia a dia</a>.</li>
+</ul>
+
+<div class="tip"><strong>Dúvidas? / Questions?</strong>
+Eu sou seu professor — me pergunte qualquer coisa: “como se diz…?”, “isso soa natural?”, “qual a diferença entre…?”. Você também pode me contar como foi a conversa e qual frase travou.</div>
+
+<h3>Fontes / Sources</h3>
+<ol class="note">
+  <li><a href="https://www.oxfordlearnersdictionaries.com/definition/english/meet_1">Oxford Learner’s Dictionaries — “meet”</a> (Nice to meet you / Nice meeting you).</li>
+  <li><a href="https://www.lawlessenglish.com/learn-english/vocabulary/greetings/">Lawless English — Greetings and replies to “How are you?”</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Desirable_difficulty">Desirable difficulty — Wikipedia</a></li>
+  <li><a href="https://bjorklab.psych.ucla.edu/wp-content/uploads/sites/13/2016/07/Finley_Benjamin_Hays_RBjork_Kornell_2011.pdf">Finley, Benjamin, Hays, Bjork &amp; Kornell (2011), on spacing and retrieval</a></li>
+</ol>
+
+<nav class="lesson-nav">
+  <span>← Início do curso</span>
+  <a href="frases-do-dia-a-dia.html">Referência: Frases do dia a dia</a>
+  <span class="note">Lição 2 (em breve) →</span>
+</nav>
+</main>
+</body>
+</html>
