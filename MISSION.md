@@ -1,7 +1,7 @@
 # Mission: Inglês para o dia a dia — morar fora
 
 ## Why
-Você vai morar (ou quer morar) em um país de língua inglesa e precisa se virar nas conversas do cotidiano: vizinhos, mercado, médico, banco, transporte. Hoje entende um pouco, mas trava na hora de falar — o objetivo é **conseguir abrir a boca e manter uma conversa curta** sem pânico.
+Você vai morar em **Atlanta, Geórgia (EUA)** e precisa se virar nas conversas do cotidiano: vizinhos, mercado, médico, banco, transporte. Hoje entende um pouco, mas trava na hora de falar — o objetivo é **conseguir abrir a boca e manter uma conversa curta** sem pânico.
 
 ## Success looks like
 - Se apresentar a um vizinho ou colega e manter 4–6 trocas de fala (nome, origem, como vai, despedida).
@@ -14,7 +14,7 @@ Você vai morar (ou quer morar) em um país de língua inglesa e precisa se vira
 - ~30 minutos por dia.
 - Nível: iniciante (entende frases simples lidas, trava ao falar).
 - Explicações em português, migrando aos poucos para o inglês ("misto").
-- País de destino ainda não definido → sotaque padrão americano até sabermos.
+- Destino: Atlanta, GA → sotaque americano (en-US); ir incluindo expressões comuns no Sul dos EUA (ex.: *y'all*) quando fizer sentido.
 
 ## Out of scope
 - Gramática formal e nomenclatura (tempos verbais pelo nome, análise sintática).

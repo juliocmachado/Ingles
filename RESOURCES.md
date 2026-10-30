@@ -24,7 +24,23 @@
 - [r/EnglishLearning](https://www.reddit.com/r/EnglishLearning/)
   Fórum grande de aprendizes. Use for: tirar dúvidas de "soa natural?" com falantes nativos.
 
+### Atlanta, GA (presencial — confirmar horários antes de ir; listagens mudam)
+
+- [Atlanta English ESL Conversation Meetup](https://www.meetup.com/atlanta-english-esl-conversation-meetup/)
+  Grupo gratuito de conversação, todos os níveis, conduzido por professor de ESL certificado. Use for: primeira prática presencial.
+- [Gwinnett County Public Library — "Let's Talk!"](https://www.globalatlanta.com/non-native-speakers-invited-to-gwinnett-english-program/)
+  Programa gratuito de conversação em inglês, 10 semanas, sem inscrição, em 5 bibliotecas de Gwinnett. Use for: prática semanal estruturada.
+- [Atlanta Public Schools — Adult Education ESL](https://www.atlantapublicschools.us/about/departments/division-of-schools/adult-education/programs/esl)
+  Aulas de ESL gratuitas (Atlanta/Fulton; pede documento de identidade e cópia do passaporte). Use for: curso regular com professor.
+- [International Rescue Committee (IRC) Atlanta — aulas de inglês](https://www.rescue.org/announcement/irc-expands-free-english-classes-gwinnett-dekalb-counties)
+  Aulas gratuitas presenciais (Clarkston, Northlake, Buford, Norcross) e online. Use for: alternativa de curso regular.
+- [Language Exchange Atlanta (Doraville)](https://www.idealist.org/en/nonprofit/1b6b42a06c1b45909c2618640bebd7d0-language-exchange-atlanta-doraville) e Atlanta Portuguese Language Exchange (Meetup)
+  Encontros de troca de idiomas com grupos de inglês e português. Use for: fazer amigos locais trocando português por inglês.
+- [Tandem — Atlanta](https://www.tandem.net/learn-portuguese/atlanta)
+  Tandem mostra falantes de inglês em Atlanta aprendendo português — parceiros ideais para troca.
+
 ## Gaps
 
-- País de destino desconhecido → faltam recursos locais (aulas gratuitas de ESL para imigrantes, bibliotecas, grupos de conversa na cidade). Buscar quando o país/cidade for definido.
+- Falta uma fonte confiável de pronúncia voltada a falantes de português.
+- Falta material sobre situações práticas específicas dos EUA (SSN, DMV, aluguel, plano de saúde) em nível iniciante.
 - Falta uma fonte confiável de pronúncia voltada a falantes de português.

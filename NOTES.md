@@ -4,6 +4,6 @@
 - Tempo: 30 min/dia → cada lição ~15 min + revisão espaçada da lição anterior.
 - Dor principal: **trava ao falar**. Priorizar produção oral (falar em voz alta, simular diálogo) sobre leitura.
 - Ensinar frases em **blocos prontos** (chunks), não palavra por palavra.
-- País de destino desconhecido — perguntar. Sotaque atual nas lições: en-US (constante `LANG` em `assets/speech.js`).
+- Destino: **Atlanta, Geórgia (EUA)**. Sotaque das lições: en-US (constante `LANG` em `assets/speech.js`). Situações e exemplos devem usar contexto americano/Atlanta (dólares, MARTA, Publix/Kroger, "Have a good one").
 - A rede da sessão bloqueia learnenglish.britishcouncil.org (não dá para buscar conteúdo); links ainda funcionam para o aluno.
 - Componentes: `assets/style.css`, `assets/speech.js` (ouvir/falar), `assets/quiz.js` (múltipla escolha), `assets/recall.js` (lembrar e digitar/falar + diálogo simulado).
